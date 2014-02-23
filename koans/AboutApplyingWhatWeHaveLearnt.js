@@ -209,7 +209,32 @@ describe("About Applying What We Have Learnt", function() {
   });
 
   it("should find the difference between the sum of the squares and the square of the sums", function () {
+    var forEach = function (list, action){
+      for (var i = 0; i < nums.length; i++){
+        action(list[i]);
+      }
+    }
+
+    var sumSquares = function (nums){
+      var total = 0;
+      nums.forEach(function (num){
+        total += Math.pow(num,2);
+      });
+      return total;
+    }
     
+    var squareOfSums = function (nums){
+      var total = 0;
+      nums.forEach(function (num){
+        total += num;
+      });
+      return total;
+    }
+
+    var differenceSquares = function (nums){
+      return squareOfSums(nums) - sumSquares(nums);
+    }
+
   });
 
   it("should find the 10001st prime", function () {
