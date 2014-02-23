@@ -182,6 +182,28 @@ describe("About Applying What We Have Learnt", function() {
   });
 
   it("should find the smallest number divisible by each of the numbers 1 to 20", function () {
+    var isNotDivisible = function (num, divisor){
+      return (num % divisor !== 0);
+    }
+
+    var lcm = function (smallNum, largeNum){
+      var attempt = 1;
+      var isLCM = true;
+      while (true){
+        isLCM = true;
+        for (var i = largeNum; i >= smallNum; i--){
+          if (isNotDivisible(attempt, i)){
+            attempt++;
+            isLCM = false;
+            break;
+          }
+        }
+        if (isLCM){
+          return attempt;
+        }
+      }
+    }
+    // Takes too long
       
     
   });
