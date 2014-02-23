@@ -101,17 +101,47 @@ describe("About Applying What We Have Learnt", function() {
       .reduce(function (ingredientCount, ingredient) {
         ingredientCount[ingredient] = (ingredientCount[ingredient] || 0) + 1
         return ingredientCount
-      }, {});
+      }, {})
+      .value();
 
     /* chain() together map(), flatten() and reduce() */
 
     expect(ingredientCount['mushrooms']).toBe(2);
   });
 
-  /*********************************************************************************/
-  /* UNCOMMENT FOR EXTRA CREDIT */
-  /*
+
   it("should find the largest prime factor of a composite number", function () {
+
+    // Create list of factors in decreasing order of size
+    var factors = function (num){
+      var factorList = [num];
+      for (var i = Math.round(num/2) + 1; i >= 1; i--){
+        if (num % i === 0){
+          factorList.push(i);
+        }
+      }
+      return factorList;
+    }
+
+    // Test whether or not a given number is prime
+    var isPrime = function (num){
+      for (var i = 2; i <= Math.sqrt(num); i++){
+        if (num % i === 0){
+          return false;
+        }
+      }
+      return true;
+    }
+
+    var largestPrime = function (num){
+      var factorList = factors(num);
+      for (var i = 0; i < factorList.length; i++){
+        if (isPrime(factorList[i])){
+          return factorList[i];
+        }
+      }
+      return 'No prime factors'
+    }
   
   });
 
