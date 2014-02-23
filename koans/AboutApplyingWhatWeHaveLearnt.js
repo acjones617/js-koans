@@ -146,7 +146,39 @@ describe("About Applying What We Have Learnt", function() {
   });
 
   it("should find the largest palindrome made from the product of two 3 digit numbers", function () {
-    
+    var isPalindrome = function (num){
+      var numString = num.toString();
+      for (var i = 0; i < numString.length/2; i++){
+        if (numString[i] !== numString[numString.length - i - 1]){
+          return false;
+        }
+      }
+      return true; 
+    }
+
+    var largestPalindrome = function (numDigits){
+      var largestPal = 0;
+      var smallNumString = '1';
+      while (smallNumString.length < numDigits){
+        smallNumString += '0';
+      }
+      var smallNum = parseInt(smallNumString);
+      var largeNum = smallNum * 10
+      for (var i = smallNum; i < largeNum; i++){
+        for (var j = smallNum; j < largeNum; j++){
+          var product = i * j;
+          if (product > largestPal && isPalindrome(product)){
+            largestPal = product;
+          }
+        }
+      }
+      if (largestPal > 0) {
+        return largestPal;
+      } else {
+        return 'No Palindrome Products';
+      }
+    }
+
   });
 
   it("should find the smallest number divisible by each of the numbers 1 to 20", function () {
