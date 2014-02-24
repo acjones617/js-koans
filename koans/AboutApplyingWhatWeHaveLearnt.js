@@ -1,7 +1,6 @@
 var _; //globals
 
 describe("About Applying What We Have Learnt", function() {
-
   var products;
 
   beforeEach(function () { 
@@ -41,11 +40,8 @@ describe("About Applying What We Have Learnt", function() {
           return ((!pizza.containsNuts) && !(_(pizza.ingredients).any(function (ingredient) {
             return ingredient === 'mushrooms';
           })));
-        };
-
+        });
       /* solve using filter() & all() / any() */
-
-
       expect(productsICanEat.length).toBe(1);
   });
 
@@ -94,7 +90,7 @@ describe("About Applying What We Have Learnt", function() {
 
   it("should count the ingredient occurrence (functional)", function () {
 
-    _(products).chain().map(function (pizza) {
+    var ingredientCount = _(products).chain().map(function (pizza) {
       return pizza['ingredients']
     })
       .flatten()
@@ -109,7 +105,7 @@ describe("About Applying What We Have Learnt", function() {
     expect(ingredientCount['mushrooms']).toBe(2);
   });
 
-
+  // Extra Credit
   it("should find the largest prime factor of a composite number", function () {
 
     // Create list of factors in decreasing order of size
@@ -261,5 +257,5 @@ describe("About Applying What We Have Learnt", function() {
     }
 
   });
-  */
+
 });
